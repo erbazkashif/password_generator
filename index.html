@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator</title>
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        padding: 30px;
+        background: #111;
+        color: #fff;
+    }
+    .box {
+        background: #222;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    input, button {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+    button {
+        background: #00ff99;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Password Generator 🔐</h2>
+
+<div class="box">
+    <input type="number" id="length" placeholder="Length (e.g. 12)" value="12"><br>
+
+    <label><input type="checkbox" id="upper" checked> Uppercase</label><br>
+    <label><input type="checkbox" id="lower" checked> Lowercase</label><br>
+    <label><input type="checkbox" id="number" checked> Numbers</label><br>
+    <label><input type="checkbox" id="symbol"> Symbols</label><br>
+
+    <button onclick="generate()">Generate</button><br>
+
+    <input type="text" id="result" readonly style="width: 80%"><br>
+    <button onclick="copy()">Copy</button>
+</div>
+
+<script>
+function generate() {
+    let length = document.getElementById("length").value;
+    let upper = document.getElementById("upper").checked;
+    let lower = document.getElementById("lower").checked;
+    let number = document.getElementById("number").checked;
+    let symbol = document.getElementById("symbol").checked;
+
+    let chars = "";
+    if (upper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (lower) chars += "abcdefghijklmnopqrstuvwxyz";
+    if (number) chars += "0123456789";
+    if (symbol) chars += "!@#$%^&*()";
+
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    document.getElementById("result").value = password;
+}
+
+function copy() {
+    let result = document.getElementById("result");
+    result.select();
+    document.execCommand("copy");
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
