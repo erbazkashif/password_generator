@@ -13,7 +13,7 @@ One-click copy to clipboard
 Clean and mobile-friendly UI
 📱 Live Demo
 👉 Add your GitHub Pages link here
-https://your-username.github.io/repo-name/
+https://erbazkashif.github.io/password_generator/
 🛠️ Tech Stack
 HTML
 CSS
